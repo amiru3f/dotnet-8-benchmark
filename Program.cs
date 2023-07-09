@@ -12,7 +12,29 @@ builder.Services.ConfigureHttpJsonOptions(options =>
 
 var app = builder.Build();
 
-app.MapGet("/", () => new User() { Name = "Some Name" });
+app.MapGet("/", () =>
+{
+    var user = new User()
+    {
+        Name = "Some Name",
+        Children = new List<Child>()
+    };
+
+    for (int i = 0; i < 1000; i++)
+    {
+        var child = new Child();
+        child.LeafChildren = new List<LeafChild>();
+
+        for (int j = 0; j < 200; j++)
+        {
+            child.LeafChildren.Add(new LeafChild());
+        }
+
+        user.Children.Add(child);
+    }
+
+    return user;
+});
 
 
 Console.WriteLine($"Is Native Aot Enabled: {!RuntimeFeature.IsDynamicCodeSupported}");
