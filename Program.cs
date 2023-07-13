@@ -16,7 +16,7 @@ app.MapGet("/", () =>
 {
     var user = new User()
     {
-        Name = "Some Name",
+        Name = Guid.NewGuid().ToString(),
         Children = new List<Child>()
     };
 

@@ -2,7 +2,7 @@ namespace test;
 using System.Text.Json.Serialization;
 public class User
 {
-    public string Name { set; get; }
+    public string? Name { set; get; }
     public List<Child> Children = new();
 }
 
