@@ -48,6 +48,7 @@ public record LeafChild
 }
 
 [JsonSourceGenerationOptions(WriteIndented = true)]
+[JsonSerializable(typeof(List<User>))]
 [JsonSerializable(typeof(User))]
 [JsonSerializable(typeof(Child))]
 [JsonSerializable(typeof(LeafChild))]
