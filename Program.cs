@@ -8,7 +8,7 @@ builder.Services.ConfigureHttpJsonOptions(options => options.SerializerOptions.T
 
 var app = builder.Build();
 
-app.MapGet("/", () => User.CreateTestUsers());
+app.MapGet("/", () => new Result());
 
 Console.WriteLine($"Is Native Aot Enabled: {!RuntimeFeature.IsDynamicCodeSupported}");
 app.Run();
