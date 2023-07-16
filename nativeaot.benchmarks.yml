@@ -43,10 +43,10 @@ jobs:
     readyStateText: Bombardier Client
     waitForExit: true
     variables:
-      connections: 1
+      connections: 10
       warmup: 15
       duration: 1
-      requests: 2000
+      requests: 20000
       timeout: 2
       rate: 0
       transport: fasthttp # | http1 | http2
@@ -64,5 +64,5 @@ jobs:
     source:
       repository: git@github.com:amiru3f/dotnet-8-benchmark.git
       branchOrCommit: main
-      project: test.csproj
+      project: Net8Benchmark.csproj
       readyStateText: Application started.

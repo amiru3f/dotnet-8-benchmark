@@ -1,24 +1,50 @@
-namespace test;
+namespace Net8Benchmark;
 using System.Text.Json.Serialization;
-public class User
+
+public record User
 {
-    public string? Name { set; get; }
+    public string? Name { set; get; } = nameof(Name);
     public List<Child> Children = new();
+
+    public static List<User> CreateTestUsers()
+    {
+        List<User> users = new();
+
+        for (int i = 0; i < 1000; i++)
+        {
+            var user = new User();
+
+            for (int j = 0; j < 100; j++)
+            {
+                var child = new Child();
+
+                for (int k = 0; k < 10; k++)
+                {
+                    child.LeafChildren.Add(new());
+                }
+
+                user.Children.Add(child);
+            }
+
+            users.Add(user);
+        }
+
+        return users;
+    }
 }
 
-public class Child
+public record Child
 {
-    public string Name { set; get; } = "Default";
-    public string Lastname { set; get; } = "Default";
-    public string FullName { set; get; } = "Default";
+    public string Name { set; get; } = nameof(Name);
+    public string Lastname { set; get; } = nameof(Lastname);
+    public string FullName { set; get; } = nameof(FullName);
 
-    public List<LeafChild> LeafChildren = new List<LeafChild>();
-
+    public List<LeafChild> LeafChildren = new();
 }
 
-public class LeafChild
+public record LeafChild
 {
-    public string Name { set; get; } = "Default";
+    public string Name { set; get; } = nameof(Name);
 }
 
 [JsonSourceGenerationOptions(WriteIndented = true)]
