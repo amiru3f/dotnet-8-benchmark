@@ -10,11 +10,11 @@ public record User
     {
         List<User> users = new();
 
-        for (int i = 0; i < 1000; i++)
+        for (int i = 0; i < 10; i++)
         {
             var user = new User();
 
-            for (int j = 0; j < 100; j++)
+            for (int j = 0; j < 10; j++)
             {
                 var child = new Child();
 

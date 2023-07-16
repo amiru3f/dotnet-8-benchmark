@@ -46,7 +46,7 @@ jobs:
       connections: 10
       warmup: 15
       duration: 1
-      requests: 20000
+      requests: 2000
       timeout: 2
       rate: 0
       transport: fasthttp # | http1 | http2
